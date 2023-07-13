@@ -12,12 +12,7 @@ const Modal = ({
   const closeModal = () => setIsOpen(false);
 
   return (
-    <AModal
-      title={`Add ${title}`}
-      open={isOpen}
-      onOk={closeModal}
-      onCancel={closeModal}
-    >
+    <AModal title={title} open={isOpen} onOk={closeModal} onCancel={closeModal}>
       {content ? (
         content
       ) : (

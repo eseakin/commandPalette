@@ -10,11 +10,13 @@ type Option = {
 
 const CommandPalette = ({
   options,
-  callbacks,
+  // callbacks,
+  getCallback,
   closeSearch,
 }: {
   options: Option[];
-  callbacks: Record<string, () => void>;
+  getCallback: (title: string) => void;
+  // callbacks: Record<string, () => void>;
   closeSearch: () => void;
 }) => {
   // const [searchText, setSearchText] = useState<string>();
@@ -48,7 +50,7 @@ const CommandPalette = ({
         defaultOpen
         onBlur={closeSearch}
         onSelect={(val: string) => {
-          callbacks[val]?.();
+          getCallback(val);
           closeSearch();
         }}
         placeholder="Cmd / to search"

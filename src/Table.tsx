@@ -35,7 +35,7 @@ const columns: ColumnsType<DataType> = [
       <>
         {tags.map((tag) => {
           let color = tag.length > 5 ? "geekblue" : "green";
-          if (tag === "awesome") {
+          if (tag === "allergy") {
             color = "volcano";
           }
           return (
@@ -47,37 +47,37 @@ const columns: ColumnsType<DataType> = [
       </>
     ),
   },
-  {
-    title: "Action",
-    key: "action",
-    render: (_, record) => (
-      <Space size="middle">
-        <a>Invite {record.name}</a>
-        <a>Delete</a>
-      </Space>
-    ),
-  },
+  // {
+  //   title: "Action",
+  //   key: "action",
+  //   render: (_, record) => (
+  //     <Space size="middle">
+  //       <a>Invite {record.name}</a>
+  //       <a>Delete</a>
+  //     </Space>
+  //   ),
+  // },
 ];
 
 const data: DataType[] = [
   {
     key: "1",
     name: "John Brown",
-    age: 32,
+    age: 12,
     address: "New York No. 1 Lake Park",
-    tags: ["nice", "developer"],
+    tags: ["nice", "new"],
   },
   {
     key: "2",
     name: "Jim Green",
-    age: 42,
+    age: 16,
     address: "London No. 1 Lake Park",
-    tags: ["awesome"],
+    tags: ["allergy"],
   },
   {
     key: "3",
     name: "Joe Black",
-    age: 32,
+    age: 24,
     address: "Sydney No. 1 Lake Park",
     tags: ["cool", "teacher"],
   },
