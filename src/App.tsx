@@ -1,24 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import "./App.css";
 import BlankForm from "./BlankForm";
 import Modal from "./Modal";
 import CommandPalette from "./CommandPalette";
-import { AutoComplete } from "antd";
 import Table from "./Table";
 
-const renderTitle = (title: string) => (
-  <span>
-    {title}
-    {/* <a
-      style={{ float: "right" }}
-      href="https://www.google.com/search?q=antd"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      more
-    </a> */}
-  </span>
-);
+const renderTitle = (title: string) => <span>{title}</span>;
 
 const renderItem = (title: string) => ({
   value: title,
@@ -30,9 +17,6 @@ const renderItem = (title: string) => ({
       }}
     >
       {title}
-      {/* <span>
-        <UserOutlined /> {count}
-      </span> */}
     </div>
   ),
 });
@@ -57,30 +41,28 @@ function App() {
   const searchRef = useRef(null);
   console.log("searchRef => ", searchRef);
 
-  const [modals, setModals] = useState([]);
+  const [modals, setModals] = useState<ReactNode[]>([]);
   console.log("modals => ", modals);
 
-  const addModal = (modal) => {
+  const addModal = (modal: ReactNode) => {
     setModals([...modals, modal]);
   };
 
-  const removeModal = (modal) => {
-    setModals(modals.filter((el) => modal !== el));
-  };
+  // const removeModal = (modal: ReactNode) => {
+  //   setModals(modals.filter((el) => modal !== el));
+  // };
 
   const callbacks = {
     ["Add student"]: () => {
       console.log("Add student => ");
       addModal(
         // Can probably make this a standalone component with a ref that it passes into removeModal()
-        <Modal title="student" content={<BlankForm title="student" />} isOpen />
+        <Modal title="student" content={<BlankForm title="student" />} />
       );
     },
     ["Add class"]: () => {
       console.log("Add class => ");
-      addModal(
-        <Modal title="class" content={<BlankForm title="class" />} isOpen />
-      );
+      addModal(<Modal title="class" content={<BlankForm title="class" />} />);
     },
     ["Add curriculum plan"]: () => {
       console.log("Add curriculum plan => ");
@@ -88,14 +70,13 @@ function App() {
         <Modal
           title="curriculum plan"
           content={<BlankForm title="curriculum plan" />}
-          isOpen
         />
       );
     },
     ["Add project"]: () => {
       console.log("Add project => ");
       addModal(
-        <Modal title="project" content={<BlankForm title="project" />} isOpen />
+        <Modal title="project" content={<BlankForm title="project" />} />
       );
     },
   };

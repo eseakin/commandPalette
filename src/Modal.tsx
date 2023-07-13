@@ -1,13 +1,19 @@
 import { useState } from "react";
-import { Button, Modal as AModal } from "antd";
+import { Modal as AModal } from "antd";
 
-const Modal = ({ content }: { content?: JSX.Element; isOpen: boolean }) => {
+const Modal = ({
+  content,
+  title,
+}: {
+  content?: JSX.Element;
+  title: string;
+}) => {
   const [isOpen, setIsOpen] = useState(true);
   const closeModal = () => setIsOpen(false);
 
   return (
     <AModal
-      title="Basic Modal"
+      title={`Add ${title}`}
       open={isOpen}
       onOk={closeModal}
       onCancel={closeModal}

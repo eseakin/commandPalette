@@ -1,15 +1,14 @@
-import React from "react";
 import { Button, Checkbox, Form, Input } from "antd";
 
-const onFinish = (values: any) => {
+const onFinish = (values: Record<string, string | boolean>) => {
   console.log("Success:", values);
 };
 
-const onFinishFailed = (errorInfo: any) => {
+const onFinishFailed = (errorInfo: unknown) => {
   console.log("Failed:", errorInfo);
 };
 
-const BlankForm: React.FC = ({ title }) => (
+const BlankForm = ({ title }: { title: string }) => (
   <>
     <div>Add {title} Form</div>
     <Form

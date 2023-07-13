@@ -1,18 +1,31 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
-import { UserOutlined } from "@ant-design/icons";
-import { AutoComplete, Input } from "antd";
+import { AutoComplete } from "antd";
 import { Modal as AModal } from "antd";
 
-const CommandPalette: React.FC = ({ options, callbacks, closeSearch }) => {
-  const [searchText, setSearchText] = useState<string>();
-  const ref = useRef(null);
-  const onSearch = (text: string) => console.log(text) || setSearchText(text);
+type Option = {
+  label: JSX.Element;
+  options: { value: string; label: JSX.Element }[];
+};
+
+const CommandPalette = ({
+  options,
+  callbacks,
+  closeSearch,
+}: {
+  options: Option[];
+  callbacks: Record<string, () => void>;
+  closeSearch: () => void;
+}) => {
+  // const [searchText, setSearchText] = useState<string>();
+  const ref = useRef<React.ElementRef<typeof AutoComplete>>(null);
+  // const onSearch = (text: string) => setSearchText(text);
 
   useEffect(() => {
     console.log("ref.current => ", ref.current);
     // if (ref.current) ref.current?.focus();
-    setTimeout(() => ref.current?.focus(), 10);
+    // eslint-disable-next-line
+    setTimeout(() => ref.current?.focus(), 100);
   }, []);
 
   return (
@@ -34,7 +47,7 @@ const CommandPalette: React.FC = ({ options, callbacks, closeSearch }) => {
         autoFocus
         defaultOpen
         onBlur={closeSearch}
-        onSelect={(val) => {
+        onSelect={(val: string) => {
           callbacks[val]?.();
           closeSearch();
         }}
