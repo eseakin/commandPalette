@@ -1,9 +1,10 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
-import "./App.css";
 import BlankForm from "./BlankForm";
 import Modal from "./Modal";
 import CommandPalette from "./CommandPalette";
 import Table from "./Table";
+
+import "./App.css";
 
 const renderTitle = (title: string) => <span>{title}</span>;
 
@@ -96,6 +97,10 @@ function App() {
   return (
     <div
       style={{
+        maxWidth: 1280,
+        margin: "0 auto",
+        padding: "2rem",
+        textAlign: "center",
         display: "flex",
         flexDirection: "column",
         gap: 20,
