@@ -70,28 +70,6 @@ function App() {
   const getCallback = (title: string) =>
     addModal(<Modal title={title} content={<BlankForm />} />);
 
-  const callbacks = {
-    ["Add student"]: () => {
-      console.log("Add student => ");
-      addModal(
-        // Can probably make this a standalone component with a ref that it passes into removeModal()
-        <Modal title="student" content={<BlankForm />} />
-      );
-    },
-    ["Add class"]: () => {
-      console.log("Add class => ");
-      addModal(<Modal title="class" content={<BlankForm />} />);
-    },
-    ["Add curriculum plan"]: () => {
-      console.log("Add curriculum plan => ");
-      addModal(<Modal title="curriculum plan" content={<BlankForm />} />);
-    },
-    ["Add project"]: () => {
-      console.log("Add project => ");
-      addModal(<Modal title="project" content={<BlankForm />} />);
-    },
-  };
-
   useEffect(() => {
     const listener = (e: KeyboardEvent) => {
       console.log("e.code => ", e.code);

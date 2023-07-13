@@ -1,5 +1,5 @@
 import React from "react";
-import { Space, Table as ATable, Tag } from "antd";
+import { Table as ATable, Tag } from "antd";
 import type { ColumnsType } from "antd/es/table";
 
 interface DataType {
